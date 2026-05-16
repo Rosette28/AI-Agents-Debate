@@ -1,9 +1,13 @@
 # Architectural Design Plan: Multi-Agent Debate System
 
 ## 1. System Architecture (C4 Model)
+
 This section uses the C4 structural framework to detail the boundaries, containers, and core component responsibilities of the application.
 
+---
+
 ### 1.1 System Context Diagram
+
 The overall relationship between the end-user, the software system boundary, and the external Gemini API infrastructure.
 
 ```mermaid
@@ -13,26 +17,30 @@ graph TD
     System -->|Secure Rate-Limited API Requests| Gemini[External Google Gemini API]
 ```
 
+---
+
 ### 1.2 Container Diagram
+
 The logical decomposition of the system into distinct execution containers that isolate concerns.
 
 ```mermaid
 graph TD
+
     subgraph "Client UI & Entry"
-        Main[main.py: CLI Interface Loop]
-        SDK[sdk.py: Unified Entry Facade]
+        Main[main.py CLI Interface]
+        SDK[sdk.py Unified Entry Facade]
     end
 
     subgraph "Service Tier (Domain Logic)"
-        Orch[orchestrator.py: Judge Orchestrator Process]
-        Agents[agents.py: Pro / Con Processing State]
-        Mixins[agent_mixins.py: Search & Memory Context Utilities]
+        Orch[orchestrator.py Judge Process]
+        Agents[agents.py Agent Runtime]
+        Mixins[agent_mixins.py Shared Utilities]
     end
 
     subgraph "Infrastructure Tier"
-        Gate[gatekeeper.py: API Gatekeeper & FIFO Queue]
-        Config[config_loader.py: Static File Config Manager]
-        Log[logger.py: Structured Rotating File Logger]
+        Gate[gatekeeper.py API Queue]
+        Config[config_loader.py Config Manager]
+        Log[logger.py Structured Logging]
     end
 
     Main --> SDK
@@ -43,89 +51,102 @@ graph TD
     Orch --> Gate
     Agents --> Gate
     Gate --> Log
+```
+
 ---
 
 ## 2. Process Flow & Inter-Process Interaction (UML)
 
 This section charts the operational behavior and communication protocols governing the system components.
 
+---
+
 ### 2.1 Debate Round Sequential Lifecycle
 
-The synchronization sequence showing how Inter-Process Communication (IPC) is tightly managed via text-based JSON message buffers flowing through the Judge Orchestrator.
+The synchronization sequence showing how Inter-Process Communication (IPC) is tightly managed via JSON message buffers flowing through the Judge Orchestrator.
 
 ```mermaid
 sequenceDiagram
     autonumber
+
     participant J as JudgeOrchestrator
-    participant P as ProAgent (Process Thread)
-    participant C as ConAgent (Process Thread)
+    participant P as ProAgent
+    participant C as ConAgent
     participant G as ApiGatekeeper
 
     Note over J,C: Debate Initialized with Dynamic Topic
 
-    J->>P: Dispatch Turn Token (Includes Context JSON payload)
+    J->>P: Dispatch Turn Token + Context Payload
     activate P
 
-    P->>G: Issue Request via Gatekeeper (Load API key from .env)
-    G->>G: Verify Rate Limits & Enforce Timeout Limits
-    G-->>P: Return Validated Response JSON
+    P->>G: Submit API Request
+    G->>G: Verify Rate Limits & Timeouts
+    G-->>P: Return Validated Response
 
-    P-->>J: Transmit Generated Argument Payload JSON
+    P-->>J: Transmit Argument Payload
     deactivate P
 
-    Note over J: Validate Payload Structure, Word Count & Tone
+    Note over J: Validate Structure, Tone & Word Count
 
-    alt Argument Validated Successfully
-        J->>C: Forward Context & Turn Token JSON
+    alt Argument Validated
+        J->>C: Forward Context + Turn Token
         activate C
 
-        C->>G: Issue Request via Gatekeeper
-        G-->>C: Return Validated Response JSON
+        C->>G: Submit API Request
+        G-->>C: Return Validated Response
 
-        C-->>J: Transmit Generated Argument Payload JSON
+        C-->>J: Transmit Argument Payload
         deactivate C
 
-    else Validation Failed (Watchdog Interception)
+    else Validation Failed
         Note over J: Trigger Watchdog Retry Routine
-        J->>P: Return Rejection JSON & Enforce Local Turn Regeneration
+        J->>P: Return Rejection Payload
     end
 ```
 
-```markdown
+---
+
 ### 2.2 Operational Deployment Diagram
+
 The mapping of software artifacts to hardware filesystem directories and logical runtime environments.
 
 ```mermaid
 graph TD
-    subgraph Machine ["Host Machine: Target Hardware Execution Node"]
-        subgraph Env ["Virtual Env: Python Runtime Environment (uv)"]
+
+    subgraph Machine["Host Machine"]
+
+        subgraph Env["Python Runtime Environment (uv)"]
             Main["main.py Loop Engine"]
-            SDK["src/sdk/ Layer Packages"]
+            SDK["src/sdk Package"]
         end
 
-        subgraph Configs ["Configuration Specs: config/ Folder"]
-            Setup["setup.json (Immutable Metadata v1.00)"]
-            Rates["rate_limits.json (Rate Control Policies)"]
+        subgraph Configs["config/ Directory"]
+            Setup["setup.json"]
+            Rates["rate_limits.json"]
         end
 
-        subgraph Filesystem ["Local Filesystem: data/ Folder"]
-            Logs["logs/app.log (Rotating File, Max 500 Lines)"]
-            Economics["results/token_logs.json (Cumulative Metrics)"]
-            Output["results/final_decision.md (Final Evaluation)"]
+        subgraph Filesystem["data/ Directory"]
+            Logs["logs/app.log"]
+            Economics["results/token_logs.json"]
+            Output["results/final_decision.md"]
         end
 
-        Secret["Secret Vault: .env File (System Key Store)"]
+        Secret[".env Secret Store"]
+
     end
 
     Main --> Configs
     SDK --> Filesystem
     SDK --> Secret
+```
 
 ---
 
 ## 3. Data Interface Contracts & JSON Schemas
 
 To ensure structured Inter-Process Communication (IPC), all interfaces exchange data strictly through explicit JSON schemas.
+
+---
 
 ### 3.1 Pro / Con Agent Argument Response Payload
 
@@ -137,7 +158,7 @@ To ensure structured Inter-Process Communication (IPC), all interfaces exchange 
   "properties": {
     "thought_process": {
       "type": "string",
-      "description": "Internal chain-of-thought strategy text"
+      "description": "Internal strategy reasoning"
     },
     "argument_summary": {
       "type": "string",
@@ -145,7 +166,7 @@ To ensure structured Inter-Process Communication (IPC), all interfaces exchange 
     },
     "full_argument": {
       "type": "string",
-      "description": "The argument targeted to the opponent. Strict limit of 100 words."
+      "description": "Strict limit of 100 words"
     },
     "addressed_opponent_points": {
       "type": "array",
@@ -169,6 +190,8 @@ To ensure structured Inter-Process Communication (IPC), all interfaces exchange 
   ]
 }
 ```
+
+---
 
 ### 3.2 Judge Orchestrator Rejection & Correction Payload
 
@@ -212,43 +235,48 @@ To ensure structured Inter-Process Communication (IPC), all interfaces exchange 
 
 This section lists the engineering rationale, constraints, and structural compromises selected for this system.
 
+---
+
 ### ADR 01: FIFO Queue for API Rate Limiting & Flow Control
 
-- **Context:** High-frequency agent calls risk breaking provider quotas, causing unhandled network crashes.
+- **Context:** High-frequency agent calls risk exceeding provider quotas and causing network instability.
 
-- **Decision:** We reject unmitigated inline requests. All calls to `google.generativeai` must flow through a centralized API Gatekeeper implementing an asynchronous First-In-First-Out (FIFO) pipeline.
+- **Decision:** All calls to `google.generativeai` flow through a centralized API Gatekeeper implementing an asynchronous FIFO pipeline.
 
-- **Consequences & Trade-offs:** This pattern slightly increases systemic execution latency when queues fill up. However, it completely prevents `429 Too Many Requests` API faults and ensures predictable execution flow under restrictive limits.
+- **Consequences & Trade-offs:** This introduces slight queue latency under load, but prevents `429 Too Many Requests` failures and ensures predictable execution flow.
 
 ---
 
 ### ADR 02: Mixin-Based Agent Hierarchy vs. Monolithic Architectures
 
-- **Context:** Pro and Con agents require different skills (e.g., search or fact-checking tools), but sharing identical baseline attributes means a standard monolithic implementation creates severe code duplication, violating the DRY principle.
+- **Context:** Pro and Con agents require different capabilities while sharing core runtime behavior. A monolithic design would create unnecessary duplication.
 
-- **Decision:** We implement a clean separation using Python class Mixins. Core state management lives in `BaseAgent`, while shared capabilities are modularly injected via isolated classes:
+- **Decision:** Shared functionality is modularized through Python Mixins. Core state logic resides in `BaseAgent`, while optional capabilities are injected separately.
 
-$$
-\text{ConcreteAgent} \subset \text{BaseAgent} \cup \text{SearchMixin} \cup \text{ContextMixin}
-$$
+```math
+\text{ConcreteAgent} \subset \text{BaseAgent}
+\cup \text{SearchMixin}
+\cup \text{ContextMixin}
+```
 
-- **Consequences & Trade-offs:** Increases structural planning complexity upfront due to Python's Multiple Inheritance Method Resolution Order (MRO). However, it offers highly modular code where individual skills can be cleanly unit-tested in total isolation.
+- **Consequences & Trade-offs:** Increases initial planning complexity due to Python MRO behavior, but enables highly modular and independently testable capabilities.
 
 ---
 
-### ADR 03: "Write/Select" Summarization for Memory Optimization
+### ADR 03: Write/Select Summarization for Memory Optimization
 
-- **Context:** Over a 10-round multi-agent debate, storing the raw token conversation history creates an exponential growth curve that threatens memory bounds and increases processing costs.
+- **Context:** Long multi-round debates cause exponential context growth and increased token costs.
 
-- **Decision:** We reject passing global message histories to the agents. We implement a strict context engineering mixin using a "Write/Select" summarization strategy.
+- **Decision:** The system rejects full-history replay and instead uses compressed rolling summaries via a context-engineering mixin.
 
-- **Consequences & Trade-offs:** Historical data undergoes lossy compression, meaning minor rhetorical nuances from early rounds are discarded. However, it ensures token usage scales linearly rather than exponentially, guaranteeing the system safely satisfies fixed context parameters:
+- **Consequences & Trade-offs:** Minor rhetorical nuances may be lost through lossy compression, but token growth becomes linear and bounded.
 
-$$
-\text{Active Context Payload} =
-\text{System Prompt} +
-\text{Compressed History Summary} +
+```math
+\text{Active Context Payload}
+=
+\text{System Prompt}
++
+\text{Compressed History Summary}
++
 \text{Current Rebuttal Target}
-$$
-
----
+```
