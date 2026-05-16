@@ -14,23 +14,22 @@ graph TD
 ```
 
 ### 1.2 Container Diagram
-
 The logical decomposition of the system into distinct execution containers that isolate concerns.
 
 ```mermaid
-graph BR
-    subgraph Client UI & Entry
+graph TD
+    subgraph "Client UI & Entry"
         Main[main.py: CLI Interface Loop]
         SDK[sdk.py: Unified Entry Facade]
     end
 
-    subgraph Service Tier (Domain Logic)
+    subgraph "Service Tier (Domain Logic)"
         Orch[orchestrator.py: Judge Orchestrator Process]
         Agents[agents.py: Pro / Con Processing State]
         Mixins[agent_mixins.py: Search & Memory Context Utilities]
     end
 
-    subgraph Infrastructure Tier
+    subgraph "Infrastructure Tier"
         Gate[gatekeeper.py: API Gatekeeper & FIFO Queue]
         Config[config_loader.py: Static File Config Manager]
         Log[logger.py: Structured Rotating File Logger]
@@ -44,8 +43,6 @@ graph BR
     Orch --> Gate
     Agents --> Gate
     Gate --> Log
-```
-
 ---
 
 ## 2. Process Flow & Inter-Process Interaction (UML)
@@ -94,37 +91,35 @@ sequenceDiagram
     end
 ```
 
+```markdown
 ### 2.2 Operational Deployment Diagram
-
 The mapping of software artifacts to hardware filesystem directories and logical runtime environments.
 
 ```mermaid
-deploymentDiagram
-    node Host_Machine [Target Hardware Execution Node] {
+graph TD
+    subgraph Machine ["Host Machine: Target Hardware Execution Node"]
+        subgraph Env ["Virtual Env: Python Runtime Environment (uv)"]
+            Main["main.py Loop Engine"]
+            SDK["src/sdk/ Layer Packages"]
+        end
 
-        node Virtual_Env [Isolated Python Runtime Environment (uv)] {
-            artifact Main_Exec [main.py Loop Engine]
-            artifact SDK_Package [src/sdk/ Layer Packages]
-        }
+        subgraph Configs ["Configuration Specs: config/ Folder"]
+            Setup["setup.json (Immutable Metadata v1.00)"]
+            Rates["rate_limits.json (Rate Control Policies)"]
+        end
 
-        folder Configuration_Specs [config/ Directory] {
-            file Setup [setup.json (Immutable Metadata v1.00)]
-            file Rates [rate_limits.json (Rate Control Policies)]
-        }
+        subgraph Filesystem ["Local Filesystem: data/ Folder"]
+            Logs["logs/app.log (Rotating File, Max 500 Lines)"]
+            Economics["results/token_logs.json (Cumulative Metrics)"]
+            Output["results/final_decision.md (Final Evaluation)"]
+        end
 
-        folder Local_Filesystem [data/ State Cache Storage] {
-            file Logs [logs/app.log (Rotating File, Max 500 Lines)]
-            file Economics [results/token_logs.json (Cumulative Metrics)]
-            file Output [results/final_decision.md (Final Evaluation)]
-        }
+        Secret["Secret Vault: .env File (System Key Store)"]
+    end
 
-        file Secret_Vault [.env File (System Key Store)]
-    }
-
-    Main_Exec --> Configuration_Specs
-    SDK_Package --> Local_Filesystem
-    SDK_Package --> Secret_Vault
-```
+    Main --> Configs
+    SDK --> Filesystem
+    SDK --> Secret
 
 ---
 
