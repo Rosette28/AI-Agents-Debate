@@ -4,14 +4,12 @@ Tests for the public SDK Entry Point.
 
 import sys
 from unittest.mock import patch, MagicMock
-import pytest
+from src.sdk.sdk import DebateSDK
 
 # Dynamically fake the missing orchestrator module structure in sys.modules 
 # so the inline import inside sdk.py doesn't crash during Phase 3 testing.
 mock_orch_module = MagicMock()
 sys.modules["src.services.orchestrator"] = mock_orch_module
-
-from src.sdk.sdk import DebateSDK
 
 
 @patch("src.services.orchestrator.DebateOrchestrator", create=True)

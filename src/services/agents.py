@@ -5,6 +5,10 @@ Agent architecture for debate system.
 """
 
 import json
+from src.services.agent_mixins import (
+    SearchMixin,
+    ContextEngineeringMixin
+)
 
 
 class BaseAgent:
@@ -41,12 +45,7 @@ class BaseAgent:
         json_response = json.dumps(response)
 
         return json.loads(json_response)
-    
 
-from src.services.agent_mixins import (
-    SearchMixin,
-    ContextEngineeringMixin
-)
 
 
 class ProAgent(
