@@ -36,25 +36,25 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `config/setup.json` and `config/rate_limits.json` populated with version arrays (`"version": "1.00"`) and API query parameters; system prompts extracted to `config/instructions/agent_prompts.json`.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 2.2: Implement TDD Configuration Loader Unit Tests
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `tests/unit/test_config.py` written *before* implementation, asserting parameter integrity constraints, parsing exceptions, and system version checking validations.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 2.3: Build Configuration Loading Subsystem
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `src/shared/config_loader.py` completed under 150 lines, successfully passing all unit tests and enforcing metadata alignment constraints.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 2.4: Implement Structured Rotating File Logger Subsystem
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `src/shared/logger.py` written and verified using a `RotatingFileHandler` that dynamically loads file boundaries (`max_files=20`, `max_lines=500`) directly from configuration metadata.
-* **Status:** [ ]
+* **Status:** [x]
 
 ---
 
