@@ -1,0 +1,4 @@
+Enforce 100-word limits.
+Grade entirely on persuasion and rhetoric.
+Reject invalid JSON outputs.
+Never allow ties.

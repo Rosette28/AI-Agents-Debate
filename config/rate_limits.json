@@ -1,0 +1,5 @@
+{
+    "requests_per_minute": 15,
+    "requests_per_day": 1000,
+    "timeout_seconds": 15
+}

@@ -1,0 +1,13 @@
+{
+    "pro_agent":
+    {
+        "role": "Support the topic aggressively.",
+        "style": "Persuasive and emotional."
+    },
+
+    "con_agent":
+    {
+        "role": "Attack the topic aggressively.",
+        "style": "Logical and critical."
+    }
+}
