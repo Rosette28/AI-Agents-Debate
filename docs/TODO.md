@@ -65,31 +65,31 @@
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `tests/unit/test_gatekeeper.py` written, defining unit tests that verify request routing behavior, rate limit interceptions, and handling of broken connection strings.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 3.2: Build Centralized API Gatekeeper with Token Economy Logging
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `src/services/gatekeeper.py` built under 150 lines, consuming credentials strictly via `os.environ.get("GEMINI_API_KEY")`, and appending raw `usage_metadata` logs directly to `data/results/token_logs.json`.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 3.3: Implement API Rate Overflow Management and Expiry Limits
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** API call handling implements an internal FIFO pipeline that cues overflowing operations instead of crashing, alongside a strict 15-second response expiration ceiling
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 3.4: Write TDD Specifications for the SDK Facade
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `tests/unit/test_sdk.py` written, specifying input expectations for system instantiation, state updates, and programmatic result retrieval.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 3.5: Build the Unified System SDK Layer
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `src/sdk/sdk.py` implemented as the single operational entry point for all underlying logic layers; direct business execution inside presentation scripts is completely locked out
-* **Status:** [ ]
+* **Status:** [x]
 
 ---
 

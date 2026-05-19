@@ -59,3 +59,26 @@ def test_generate_response_handles_tokens(mock_model_class, mock_env, tmp_path):
     _, kwargs = mock_instance.generate_content.call_args
     assert "request_options" in kwargs
     assert kwargs["request_options"]["timeout"] == 15
+
+@patch("src.services.gatekeeper.time.sleep")
+@patch("src.services.gatekeeper.time.time")
+def test_fifo_queue_rate_limiting(mock_time, mock_sleep, mock_env):
+        """Test that the FIFO queue intercepts and delays requests hitting the rate limit."""
+        gatekeeper = ApiGatekeeper()
+        # Force a tiny rate limit of 2 requests per minute for testing
+        gatekeeper.rpm_limit = 2 
+        
+        # 1st request at 100 seconds
+        mock_time.return_value = 100.0
+        gatekeeper._enforce_fifo_queue()
+        
+        # 2nd request at 101 seconds (Limit reached)
+        mock_time.return_value = 101.0
+        gatekeeper._enforce_fifo_queue()
+        
+        # 3rd request at 102 seconds (Should trigger rate limiter!)
+        mock_time.return_value = 102.0
+        gatekeeper._enforce_fifo_queue()
+        
+        # Assert that the gatekeeper forced the system to sleep (intercepted the overflow)
+        mock_sleep.assert_called_once()
