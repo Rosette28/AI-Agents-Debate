@@ -38,7 +38,9 @@ class BaseAgent:
             "argument": argument
         }
 
-        return json.dumps(response)
+        json_response = json.dumps(response)
+
+        return json.loads(json_response)
     
 
 from src.services.agent_mixins import (
