@@ -22,3 +22,21 @@ class SearchMixin:
         """
 
         return "Search results for: " + query
+    
+class ContextEngineeringMixin:
+    """
+    Provides context summarization capability.
+    """
+
+    def summarize_context(self, text):
+        """
+        Summarize long context.
+
+        Args:
+            text (str): Input context.
+
+        Returns:
+            str
+        """
+
+        return text[:100]
