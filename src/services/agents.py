@@ -39,3 +39,33 @@ class BaseAgent:
         }
 
         return json.dumps(response)
+    
+
+from src.services.agent_mixins import (
+    SearchMixin,
+    ContextEngineeringMixin
+)
+
+
+class ProAgent(
+    BaseAgent,
+    SearchMixin,
+    ContextEngineeringMixin
+):
+    """
+    Pro debate agent.
+    """
+
+    pass
+
+
+class ConAgent(
+    BaseAgent,
+    SearchMixin,
+    ContextEngineeringMixin
+):
+    """
+    Con debate agent.
+    """
+
+    pass
