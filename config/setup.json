@@ -1,0 +1,10 @@
+{
+    "version": "1.00",
+    "max_rounds": 10,
+    "logging":
+    {
+        "max_files": 20,
+        "max_lines": 500,
+        "log_path": "data/logs/app.log"
+    }
+}
