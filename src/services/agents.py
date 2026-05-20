@@ -1,72 +1,44 @@
 """
 File: agents.py
 Description:
-Agent architecture for debate system.
+Agent architecture for debate system. (Stubbed for Phase 4.1-4.3 commit)
 """
 
 import json
 from src.services.agent_mixins import (
-    SearchMixin,
+    AdvancedReasoningMixin,
     ContextEngineeringMixin
 )
 
 
 class BaseAgent:
-    """
-    Base debate agent.
-    """
-
+    """Base debate agent."""
     def __init__(self, name):
-        """
-        Initialize agent.
-
-        Args:
-            name (str): Agent name.
-        """
-
         self.name = name
 
     def generate_response(self, argument):
-        """
-        Generate JSON response.
-
-        Args:
-            argument (str): Debate argument.
-
-        Returns:
-            dict
-        """
-
+        """Temporary stub to keep tests passing."""
         response = {
             "agent": self.name,
             "argument": argument
         }
-
         json_response = json.dumps(response)
-
         return json.loads(json_response)
-
 
 
 class ProAgent(
     BaseAgent,
-    SearchMixin,
+    AdvancedReasoningMixin,
     ContextEngineeringMixin
 ):
-    """
-    Pro debate agent.
-    """
-
+    """Pro debate agent."""
     pass
 
 
 class ConAgent(
     BaseAgent,
-    SearchMixin,
+    AdvancedReasoningMixin,
     ContextEngineeringMixin
 ):
-    """
-    Con debate agent.
-    """
-
+    """Con debate agent."""
     pass
