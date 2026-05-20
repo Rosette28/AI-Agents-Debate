@@ -100,19 +100,19 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `tests/unit/test_mixins.py` created, verifying clean execution of search modules, data filtering behaviors, and history summary calculations.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 4.2: Build Search and Verification Mixin Component
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `SearchAndFactCheckMixin` added to `src/services/agent_mixins.py`, enabling model function calling to search the live web and verify claims.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 4.3: Build "Write/Select" Context Engineering Memory Mixin
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `ContextEngineeringMixin` completed, implementing background LLM history compression routines to keep primary context window allocations low.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 4.4: Write TDD Contracts for Concrete Agent Definitions
 * **Priority:** High
@@ -130,7 +130,7 @@
 * **Priority:** Medium
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `LogicalReasoningMixin` added, allowing active agents to spawn short-lived background Subagents for deep argumentation analysis before returning text
-* **Status:** [ ]
+* **Status:** [x]
 
 ---
 
