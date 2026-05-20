@@ -118,13 +118,13 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `tests/unit/test_agents.py` written, asserting prompt assembly rules, role personas, and strict JSON output formats.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 4.5: Build BaseAgent and Inherited Pro/Con Subclasses
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `BaseAgent`, `ProAgent`, and `ConAgent` objects fully written under the 150-line maximum length constraint, natively forcing and parsing structured JSON communications.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 4.6: Implement Complex Reasoning Subagent Spawners
 * **Priority:** Medium
@@ -141,31 +141,31 @@
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `tests/unit/test_orchestrator.py` compiled, verifying turn rotation tracking, verification errors, and simulated connection recovery steps.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 5.2: Build Mediated Debate Loop Engine
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `DebateOrchestrator` in `src/services/orchestrator.py` implemented to run exactly 10 round turns, routing all data payloads exclusively through the Judge process
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 5.3: Build Programmatic Response Validators
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** Hardcoded validation checks for JSON payload structure, 100-word thresholds, and semantic engagement assertions added to the Judge loop
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 5.4: Integrate Resiliency Watchdog Recovery Subsystem
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** Programmatic `try-except` try blocks implemented around agent executions; returns structured correction messages (`status: REJECTED`) to handle exceptions gracefully
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 5.5: Build Graded Verdict Generation Logic
 * **Priority:** High
 * **Assignee:** Partner A
 * **Definition of Done (DoD):** `conclude_debate()` method completed, enforcing an absolute winner constraint (0% tie rate) and exporting a detailed evaluation file to `data/results/final_decision.md`.
-* **Status:** [ ]
+* **Status:** [x]
 
 ---
 
