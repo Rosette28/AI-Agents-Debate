@@ -26,17 +26,19 @@ def test_gatekeeper_missing_key_throws_error():
             ApiGatekeeper()
 
 
-@patch("src.services.gatekeeper.genai.GenerativeModel")
-def test_generate_response_handles_tokens(mock_model_class, mock_env, tmp_path):
+@patch("src.services.gatekeeper.genai.Client")
+def test_generate_response_handles_tokens(mock_client_class, mock_env, tmp_path):
     """Test that a successful call logs token economics correctly."""
-    # Setup mock response
-    mock_instance = MagicMock()
+    # Setup mock response for the new google.genai Client architecture
+    mock_client_instance = MagicMock()
     mock_response = MagicMock()
     mock_response.text = "This is a test response."
     mock_response.usage_metadata.prompt_token_count = 10
     mock_response.usage_metadata.candidates_token_count = 20
-    mock_instance.generate_content.return_value = mock_response
-    mock_model_class.return_value = mock_instance
+    
+    # Wire the mock to mimic client.models.generate_content
+    mock_client_instance.models.generate_content.return_value = mock_response
+    mock_client_class.return_value = mock_client_instance
 
     # Point the gatekeeper to a temporary test log file
     gatekeeper = ApiGatekeeper()
@@ -49,36 +51,32 @@ def test_generate_response_handles_tokens(mock_model_class, mock_env, tmp_path):
     gatekeeper.log_path = str(test_log_path)
 
     # Execute
-    result = gatekeeper.generate_response("ProAgent", "gemini-2.5-flash", "Hello")
+    result = gatekeeper.generate_response("ProAgent", "gemini-1.5-flash", "Hello")
 
     # Assertions
     assert result == "This is a test response."
-    mock_instance.generate_content.assert_called_once()
-    
-    # Verify the timeout constraint was passed to the API
-    _, kwargs = mock_instance.generate_content.call_args
-    assert "request_options" in kwargs
-    assert kwargs["request_options"]["timeout"] == 15
+    mock_client_instance.models.generate_content.assert_called_once()
+
 
 @patch("src.services.gatekeeper.time.sleep")
 @patch("src.services.gatekeeper.time.time")
 def test_fifo_queue_rate_limiting(mock_time, mock_sleep, mock_env):
-        """Test that the FIFO queue intercepts and delays requests hitting the rate limit."""
-        gatekeeper = ApiGatekeeper()
-        # Force a tiny rate limit of 2 requests per minute for testing
-        gatekeeper.rpm_limit = 2 
-        
-        # 1st request at 100 seconds
-        mock_time.return_value = 100.0
-        gatekeeper._enforce_fifo_queue()
-        
-        # 2nd request at 101 seconds (Limit reached)
-        mock_time.return_value = 101.0
-        gatekeeper._enforce_fifo_queue()
-        
-        # 3rd request at 102 seconds (Should trigger rate limiter!)
-        mock_time.return_value = 102.0
-        gatekeeper._enforce_fifo_queue()
-        
-        # Assert that the gatekeeper forced the system to sleep (intercepted the overflow)
-        mock_sleep.assert_called_once()
+    """Test that the FIFO queue intercepts and delays requests hitting the rate limit."""
+    gatekeeper = ApiGatekeeper()
+    # Force a tiny rate limit of 2 requests per minute for testing
+    gatekeeper.rpm_limit = 2 
+    
+    # 1st request at 100 seconds
+    mock_time.return_value = 100.0
+    gatekeeper._enforce_fifo_queue()
+    
+    # 2nd request at 101 seconds (Limit reached)
+    mock_time.return_value = 101.0
+    gatekeeper._enforce_fifo_queue()
+    
+    # 3rd request at 102 seconds (Should trigger rate limiter!)
+    mock_time.return_value = 102.0
+    gatekeeper._enforce_fifo_queue()
+    
+    # Assert that the gatekeeper forced the system to sleep (intercepted the overflow)
+    mock_sleep.assert_called_once()

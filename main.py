@@ -5,10 +5,10 @@ Interactive CLI for the AI Debate Arena.
 """
 
 from dotenv import load_dotenv
+from src.sdk.sdk import DebateSDK
 
 load_dotenv()
 
-from src.sdk.sdk import DebateSDK
 
 
 def print_menu():

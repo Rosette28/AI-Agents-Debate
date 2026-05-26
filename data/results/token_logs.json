@@ -442,5 +442,23 @@
         "agent_role": "JudgeOrchestrator",
         "prompt_tokens": 1795,
         "completion_tokens": 886
+    },
+    {
+        "timestamp": "2026-05-26T19:21:09.508309",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 327,
+        "completion_tokens": 271
+    },
+    {
+        "timestamp": "2026-05-26T19:21:31.225925",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 206,
+        "completion_tokens": 176
+    },
+    {
+        "timestamp": "2026-05-26T19:21:38.540938",
+        "agent_role": "con_agent",
+        "prompt_tokens": 454,
+        "completion_tokens": 1170
     }
 ]

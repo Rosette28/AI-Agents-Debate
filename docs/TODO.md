@@ -176,13 +176,13 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `main.py` completed with a keyboard-driven loop (`while True`) providing options to configure parameters, run debates, and extract files exclusively via the SDK layer
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 6.2: Execute Static Quality Analysis and Code Review Controls
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `uv run ruff check .` executed with zero warnings; `uv run pytest --cov=src` confirming global test coverage exceeds the strict 85% requirement.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 6.3: Implement Financial Token Economics & Sensitivity Research
 * **Priority:** High
@@ -194,4 +194,4 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** Root `README.md` completed, incorporating an OOP class hierarchy diagram, CLI operational guides, financial metrics, and a transcript log of an entire debate session.
-* **Status:** [ ]
+* **Status:** [x]
