@@ -188,7 +188,7 @@
 * **Priority:** High
 * **Assignee:** Partner B
 * **Definition of Done (DoD):** `data/notebooks/token_analysis.ipynb` compiled, displaying visualizations of input/output distributions, USD cost calculations, and OAT sensitivity curves comparing agent behavior at `temp=0.2` versus `temp=0.8`.
-* **Status:** [ ]
+* **Status:** [x]
 
 ### Task 6.4: Finalize Comprehensive Lab Manual (README.md)
 * **Priority:** High
