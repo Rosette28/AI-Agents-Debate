@@ -49,7 +49,7 @@ def test_generate_response_handles_tokens(mock_model_class, mock_env, tmp_path):
     gatekeeper.log_path = str(test_log_path)
 
     # Execute
-    result = gatekeeper.generate_response("ProAgent", "gemini-1.5-flash", "Hello")
+    result = gatekeeper.generate_response("ProAgent", "gemini-2.0-flash", "Hello")
 
     # Assertions
     assert result == "This is a test response."

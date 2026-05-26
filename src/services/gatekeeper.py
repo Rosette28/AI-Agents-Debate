@@ -8,7 +8,7 @@ import json
 import time
 import warnings
 from datetime import datetime
-import google.generativeai as genai
+from google import genai
 from src.shared.config_loader import ConfigLoader
 
 # Suppress the Google Generative AI package deprecation warning
@@ -23,7 +23,6 @@ class ApiGatekeeper:
         if not self.api_key:
             raise ValueError("CRITICAL: GEMINI_API_KEY environment variable not set.")
         
-        genai.configure(api_key=self.api_key)
         self.rate_limits = ConfigLoader.load_json("config/rate_limits.json")
         self.rpm_limit = self.rate_limits.get("requests_per_minute", 15)
         self.timeout = self.rate_limits.get("timeout_seconds", 15)
@@ -71,11 +70,16 @@ class ApiGatekeeper:
         # Enable Live Google Search Grounding if requested by the Mixin!
         tools = "google_search" if enable_search else None
         
-        model = genai.GenerativeModel(
-            model_name=model_name,
-            system_instruction=system_instruction,
-            tools=tools
+        client = genai.Client(api_key=self.api_key)
+
+        full_prompt = prompt
+
+        if system_instruction:
+            full_prompt = f"{system_instruction}\n\n{prompt}"
+
+        response = client.models.generate_content(
+            model=model_name,
+            contents=full_prompt
         )
-        response = model.generate_content(prompt, request_options={"timeout": self.timeout})
         self._log_token_economics(agent_role, response.usage_metadata)
         return response.text

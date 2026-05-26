@@ -86,6 +86,7 @@ class DebateOrchestrator:
                 pro_resp = self._watchdog_retry(self.pro_agent, last_con_arg, pro_memory, error)
 
             last_pro_arg = pro_resp.get("full_argument", "")
+            print(f"\n[PRO AGENT]:\n{last_pro_arg}\n")
             self.history.append({"role": "PRO", "argument": last_pro_arg})
 
             if hasattr(self.pro_agent, "update_memory"):
@@ -98,6 +99,7 @@ class DebateOrchestrator:
                 con_resp = self._watchdog_retry(self.con_agent, last_pro_arg, con_memory, error)
 
             last_con_arg = con_resp.get("full_argument", "")
+            print(f"\n[CON AGENT]:\n{last_con_arg}\n")
             self.history.append({"role": "CON", "argument": last_con_arg})
 
             if hasattr(self.con_agent, "update_memory"):
@@ -122,7 +124,7 @@ class DebateOrchestrator:
 
         verdict = self.gatekeeper.generate_response(
             agent_role="JudgeOrchestrator",
-            model_name="gemini-1.5-pro",
+            model_name="gemini-2.0-flash",
             prompt=prompt,
             system_instruction=self.judge_instructions,
             enable_search=False

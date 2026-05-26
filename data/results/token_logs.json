@@ -1,1 +1,86 @@
-[]
+[
+    {
+        "timestamp": "2026-05-26T09:05:51.381065",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 330,
+        "completion_tokens": 282
+    },
+    {
+        "timestamp": "2026-05-26T09:06:01.089590",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 405,
+        "completion_tokens": 1456
+    },
+    {
+        "timestamp": "2026-05-26T09:08:24.178649",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 330,
+        "completion_tokens": 303
+    },
+    {
+        "timestamp": "2026-05-26T09:08:26.804927",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 195,
+        "completion_tokens": 106
+    },
+    {
+        "timestamp": "2026-05-26T09:08:32.405362",
+        "agent_role": "con_agent",
+        "prompt_tokens": 446,
+        "completion_tokens": 872
+    },
+    {
+        "timestamp": "2026-05-26T09:08:40.002719",
+        "agent_role": "con_agent",
+        "prompt_tokens": 521,
+        "completion_tokens": 1112
+    },
+    {
+        "timestamp": "2026-05-26T09:08:41.854476",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 118,
+        "completion_tokens": 26
+    },
+    {
+        "timestamp": "2026-05-26T09:08:45.488009",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 461,
+        "completion_tokens": 539
+    },
+    {
+        "timestamp": "2026-05-26T09:08:51.629862",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 536,
+        "completion_tokens": 959
+    },
+    {
+        "timestamp": "2026-05-26T09:08:53.519409",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 198,
+        "completion_tokens": 106
+    },
+    {
+        "timestamp": "2026-05-26T09:09:00.183595",
+        "agent_role": "con_agent",
+        "prompt_tokens": 394,
+        "completion_tokens": 861
+    },
+    {
+        "timestamp": "2026-05-26T09:09:08.357804",
+        "agent_role": "con_agent",
+        "prompt_tokens": 469,
+        "completion_tokens": 1066
+    },
+    {
+        "timestamp": "2026-05-26T09:09:09.985369",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 118,
+        "completion_tokens": 26
+    },
+    {
+        "timestamp": "2026-05-26T09:09:14.604425",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 461,
+        "completion_tokens": 702
+    }
+]
