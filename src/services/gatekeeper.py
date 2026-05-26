@@ -42,7 +42,8 @@ class ApiGatekeeper:
 
     def _log_token_economics(self, agent_role: str, usage_metadata):
         """Extract and save token costs."""
-        if not usage_metadata: return
+        if not usage_metadata:
+            return
         log_entry = {
             "timestamp": datetime.now().isoformat(),
             "agent_role": agent_role,
@@ -50,10 +51,13 @@ class ApiGatekeeper:
             "completion_tokens": getattr(usage_metadata, "candidates_token_count", 0)
         }
         if not os.path.exists(self.log_path):
-            with open(self.log_path, "w", encoding="utf-8") as f: json.dump([], f)
+            with open(self.log_path, "w", encoding="utf-8") as f:
+                json.dump([], f)
         with open(self.log_path, "r+", encoding="utf-8") as f:
-            try: data = json.load(f)
-            except json.JSONDecodeError: data = []
+            try:
+                data = json.load(f)
+            except json.JSONDecodeError:
+                data = []
             data.append(log_entry)
             f.seek(0)
             json.dump(data, f, indent=4)
