@@ -12,14 +12,18 @@ def print_menu():
     Print system menu.
     """
 
-    print("\n" + "=" * 50)
-    print("🤖 Welcome to the AI Debate Arena 🤖")
-    print("=" * 50)
+    print("\n" + "=" * 60)
 
-    print("1. Set Debate Topic")
-    print("2. Run Debate")
-    print("3. View Final Verdict")
-    print("4. Exit")
+    print("🤖 AI DEBATE ARENA 🤖")
+
+    print("=" * 60)
+
+    print("1️⃣  Set Debate Topic")
+    print("2️⃣  Run Debate")
+    print("3️⃣  View Final Verdict")
+    print("4️⃣  Exit")
+
+    print("=" * 60)
 
 
 def main():
