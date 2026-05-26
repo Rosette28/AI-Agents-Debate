@@ -40,6 +40,8 @@ def test_orchestrator_loop_and_verdict(mock_gatekeeper_class, mock_con_gen, mock
 
     # Initialize and run a shortened 1-round debate
     orchestrator = DebateOrchestrator()
+    orchestrator.gatekeeper = gatekeeper_instance
+    
     orchestrator.initialize_debate("Cats vs Dogs")
     orchestrator.total_rounds = 1
     orchestrator.run_debate_loop()
