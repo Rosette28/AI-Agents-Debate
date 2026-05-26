@@ -15,7 +15,7 @@ class AdvancedReasoningMixin:
         )
         return self.gatekeeper.generate_response(
             agent_role="Subagent_FactChecker", 
-            model_name="gemini-1.5-flash", 
+            model_name="gemini-2.5-flash", 
             prompt=prompt, 
             enable_search=True
         )
@@ -29,7 +29,7 @@ class AdvancedReasoningMixin:
             "Just list them."
         )
         drafts = self.gatekeeper.generate_response(
-            "Subagent_Brainstormer", "gemini-1.5-flash", draft_prompt, enable_search=False
+            "Subagent_Brainstormer", "gemini-2.5-flash", draft_prompt, enable_search=False
         )
 
         # Step B: Validate and Source (With Search)
@@ -39,7 +39,7 @@ class AdvancedReasoningMixin:
             "along with their supporting URL sources."
         )
         return self.gatekeeper.generate_response(
-            "Subagent_Validator", "gemini-1.5-flash", validation_prompt, enable_search=True
+            "Subagent_Validator", "gemini-2.5-flash", validation_prompt, enable_search=True
         )
 
     def find_counterarguments(self, target_arg: str, old_args: list) -> str:
@@ -56,7 +56,7 @@ class AdvancedReasoningMixin:
             "If YES, start response with [FOUND] and explain how. If NO, reply EXACTLY with [NOT_FOUND]."
         )
         memory_check = self.gatekeeper.generate_response(
-            "Subagent_Memory", "gemini-1.5-flash", memory_prompt, enable_search=False
+            "Subagent_Memory", "gemini-2.5-flash", memory_prompt, enable_search=False
         )
         
         if "[FOUND]" in memory_check:
@@ -68,7 +68,7 @@ class AdvancedReasoningMixin:
             "Provide the counterargument and include the URL sources."
         )
         return self.gatekeeper.generate_response(
-            "Subagent_CounterSearch", "gemini-1.5-flash", search_prompt, enable_search=True
+            "Subagent_CounterSearch", "gemini-2.5-flash", search_prompt, enable_search=True
         )
 
 
@@ -103,7 +103,7 @@ class ContextEngineeringMixin:
         )
         
         response_text = self.gatekeeper.generate_response(
-            "Subagent_MemoryManager", "gemini-1.5-flash", prompt, enable_search=False
+            "Subagent_MemoryManager", "gemini-2.5-flash", prompt, enable_search=False
         )
         
         # Safely parse the LLM output back into a Python dictionary
