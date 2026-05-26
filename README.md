@@ -54,7 +54,7 @@ To run this simulation locally, you must configure your environment to safely in
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YourUsername/AI-Agents-Debate.git
+git clone https://github.com/Rosette28/AI-Agents-Debate.git
 cd AI-Agents-Debate
 ```
 
@@ -130,6 +130,9 @@ The system is heavily parameterized. All configuration is managed via files in t
 ---
 
 # 6. Examples & Visualizations
+![Alt text](assets/debate_run_1.jpg)
+![Alt text](assets/debate_run_2.jpg)
+The final decision is in: data/results/final_decision.md
 
 ## 6.1 Live Debate Execution
 
