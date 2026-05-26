@@ -82,5 +82,365 @@
         "agent_role": "pro_agent",
         "prompt_tokens": 461,
         "completion_tokens": 702
+    },
+    {
+        "timestamp": "2026-05-26T16:15:56.381538",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 330,
+        "completion_tokens": 292
+    },
+    {
+        "timestamp": "2026-05-26T16:15:58.771294",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 203,
+        "completion_tokens": 118
+    },
+    {
+        "timestamp": "2026-05-26T16:16:05.650303",
+        "agent_role": "con_agent",
+        "prompt_tokens": 454,
+        "completion_tokens": 1165
+    },
+    {
+        "timestamp": "2026-05-26T16:16:12.850974",
+        "agent_role": "con_agent",
+        "prompt_tokens": 529,
+        "completion_tokens": 1193
+    },
+    {
+        "timestamp": "2026-05-26T16:16:14.847513",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 118,
+        "completion_tokens": 26
+    },
+    {
+        "timestamp": "2026-05-26T16:19:54.269274",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 330,
+        "completion_tokens": 353
+    },
+    {
+        "timestamp": "2026-05-26T16:19:57.807820",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 213,
+        "completion_tokens": 132
+    },
+    {
+        "timestamp": "2026-05-26T16:20:05.166906",
+        "agent_role": "con_agent",
+        "prompt_tokens": 464,
+        "completion_tokens": 1221
+    },
+    {
+        "timestamp": "2026-05-26T16:20:17.975696",
+        "agent_role": "con_agent",
+        "prompt_tokens": 539,
+        "completion_tokens": 1646
+    },
+    {
+        "timestamp": "2026-05-26T16:20:19.566722",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 118,
+        "completion_tokens": 26
+    },
+    {
+        "timestamp": "2026-05-26T16:20:24.208820",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 487,
+        "completion_tokens": 311
+    },
+    {
+        "timestamp": "2026-05-26T16:20:28.527161",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 304,
+        "completion_tokens": 132
+    },
+    {
+        "timestamp": "2026-05-26T16:20:35.087370",
+        "agent_role": "con_agent",
+        "prompt_tokens": 474,
+        "completion_tokens": 1044
+    },
+    {
+        "timestamp": "2026-05-26T16:20:40.541074",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 228,
+        "completion_tokens": 167
+    },
+    {
+        "timestamp": "2026-05-26T16:20:52.852856",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 597,
+        "completion_tokens": 887
+    },
+    {
+        "timestamp": "2026-05-26T16:21:00.366851",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 672,
+        "completion_tokens": 1322
+    },
+    {
+        "timestamp": "2026-05-26T16:21:02.317433",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 224,
+        "completion_tokens": 132
+    },
+    {
+        "timestamp": "2026-05-26T16:21:05.166404",
+        "agent_role": "con_agent",
+        "prompt_tokens": 535,
+        "completion_tokens": 373
+    },
+    {
+        "timestamp": "2026-05-26T16:21:28.206197",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 344,
+        "completion_tokens": 211
+    },
+    {
+        "timestamp": "2026-05-26T16:21:44.593200",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 572,
+        "completion_tokens": 1473
+    },
+    {
+        "timestamp": "2026-05-26T16:21:51.084716",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 647,
+        "completion_tokens": 849
+    },
+    {
+        "timestamp": "2026-05-26T16:21:53.174168",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 224,
+        "completion_tokens": 132
+    },
+    {
+        "timestamp": "2026-05-26T16:22:01.038131",
+        "agent_role": "con_agent",
+        "prompt_tokens": 579,
+        "completion_tokens": 1376
+    },
+    {
+        "timestamp": "2026-05-26T16:22:04.359816",
+        "agent_role": "con_agent",
+        "prompt_tokens": 654,
+        "completion_tokens": 387
+    },
+    {
+        "timestamp": "2026-05-26T16:22:11.725906",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 378,
+        "completion_tokens": 211
+    },
+    {
+        "timestamp": "2026-05-26T16:22:17.809168",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 562,
+        "completion_tokens": 1008
+    },
+    {
+        "timestamp": "2026-05-26T16:22:33.550815",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 637,
+        "completion_tokens": 1281
+    },
+    {
+        "timestamp": "2026-05-26T16:22:35.245557",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 224,
+        "completion_tokens": 132
+    },
+    {
+        "timestamp": "2026-05-26T16:22:41.965894",
+        "agent_role": "con_agent",
+        "prompt_tokens": 579,
+        "completion_tokens": 964
+    },
+    {
+        "timestamp": "2026-05-26T16:22:45.285087",
+        "agent_role": "con_agent",
+        "prompt_tokens": 654,
+        "completion_tokens": 399
+    },
+    {
+        "timestamp": "2026-05-26T16:22:53.164893",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 385,
+        "completion_tokens": 233
+    },
+    {
+        "timestamp": "2026-05-26T16:22:59.987487",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 569,
+        "completion_tokens": 1126
+    },
+    {
+        "timestamp": "2026-05-26T16:23:03.507116",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 644,
+        "completion_tokens": 439
+    },
+    {
+        "timestamp": "2026-05-26T16:23:13.806628",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 329,
+        "completion_tokens": 249
+    },
+    {
+        "timestamp": "2026-05-26T16:23:20.358961",
+        "agent_role": "con_agent",
+        "prompt_tokens": 706,
+        "completion_tokens": 900
+    },
+    {
+        "timestamp": "2026-05-26T16:23:23.729651",
+        "agent_role": "con_agent",
+        "prompt_tokens": 781,
+        "completion_tokens": 447
+    },
+    {
+        "timestamp": "2026-05-26T16:23:42.122876",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 431,
+        "completion_tokens": 351
+    },
+    {
+        "timestamp": "2026-05-26T16:23:50.604900",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 710,
+        "completion_tokens": 1244
+    },
+    {
+        "timestamp": "2026-05-26T16:23:59.884252",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 785,
+        "completion_tokens": 1648
+    },
+    {
+        "timestamp": "2026-05-26T16:24:03.246401",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 341,
+        "completion_tokens": 249
+    },
+    {
+        "timestamp": "2026-05-26T16:24:05.489178",
+        "agent_role": "con_agent",
+        "prompt_tokens": 719,
+        "completion_tokens": 267
+    },
+    {
+        "timestamp": "2026-05-26T16:24:10.924638",
+        "agent_role": "con_agent",
+        "prompt_tokens": 794,
+        "completion_tokens": 861
+    },
+    {
+        "timestamp": "2026-05-26T16:24:13.643095",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 443,
+        "completion_tokens": 351
+    },
+    {
+        "timestamp": "2026-05-26T16:24:21.625479",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 604,
+        "completion_tokens": 1159
+    },
+    {
+        "timestamp": "2026-05-26T16:24:26.924237",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 679,
+        "completion_tokens": 783
+    },
+    {
+        "timestamp": "2026-05-26T16:24:32.364413",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 341,
+        "completion_tokens": 249
+    },
+    {
+        "timestamp": "2026-05-26T16:24:36.208203",
+        "agent_role": "con_agent",
+        "prompt_tokens": 719,
+        "completion_tokens": 419
+    },
+    {
+        "timestamp": "2026-05-26T16:24:52.842328",
+        "agent_role": "con_agent",
+        "prompt_tokens": 794,
+        "completion_tokens": 1030
+    },
+    {
+        "timestamp": "2026-05-26T16:24:55.568412",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 443,
+        "completion_tokens": 351
+    },
+    {
+        "timestamp": "2026-05-26T16:24:59.082300",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 604,
+        "completion_tokens": 470
+    },
+    {
+        "timestamp": "2026-05-26T16:25:04.623302",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 679,
+        "completion_tokens": 899
+    },
+    {
+        "timestamp": "2026-05-26T16:25:06.622195",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 341,
+        "completion_tokens": 249
+    },
+    {
+        "timestamp": "2026-05-26T16:25:10.176373",
+        "agent_role": "con_agent",
+        "prompt_tokens": 719,
+        "completion_tokens": 437
+    },
+    {
+        "timestamp": "2026-05-26T16:25:19.241849",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 537,
+        "completion_tokens": 351
+    },
+    {
+        "timestamp": "2026-05-26T16:25:25.824876",
+        "agent_role": "pro_agent",
+        "prompt_tokens": 698,
+        "completion_tokens": 459
+    },
+    {
+        "timestamp": "2026-05-26T16:25:35.409017",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 436,
+        "completion_tokens": 293
+    },
+    {
+        "timestamp": "2026-05-26T16:25:39.886235",
+        "agent_role": "con_agent",
+        "prompt_tokens": 814,
+        "completion_tokens": 691
+    },
+    {
+        "timestamp": "2026-05-26T16:25:49.205488",
+        "agent_role": "con_agent",
+        "prompt_tokens": 889,
+        "completion_tokens": 1755
+    },
+    {
+        "timestamp": "2026-05-26T16:25:52.080138",
+        "agent_role": "Subagent_MemoryManager",
+        "prompt_tokens": 443,
+        "completion_tokens": 351
+    },
+    {
+        "timestamp": "2026-05-26T16:26:47.484902",
+        "agent_role": "JudgeOrchestrator",
+        "prompt_tokens": 1795,
+        "completion_tokens": 886
     }
 ]

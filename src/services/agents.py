@@ -49,7 +49,7 @@ class BaseAgent:
 
         response_text = self.gatekeeper.generate_response(
             agent_role=self.role_key,
-            model_name="gemini-2.0-flash",
+            model_name="gemini-2.5-flash",
             prompt=prompt,
             system_instruction=sys_instruct,
             enable_search=False

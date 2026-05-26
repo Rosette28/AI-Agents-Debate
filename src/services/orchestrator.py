@@ -124,7 +124,7 @@ class DebateOrchestrator:
 
         verdict = self.gatekeeper.generate_response(
             agent_role="JudgeOrchestrator",
-            model_name="gemini-2.0-flash",
+            model_name="gemini-2.5-flash",
             prompt=prompt,
             system_instruction=self.judge_instructions,
             enable_search=False
